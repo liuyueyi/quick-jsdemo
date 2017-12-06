@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+   <head>
+      <meta charset="UTF-8" />
+      <title>弹窗测试</title>
+
+      <link rel="stylesheet" type="text/css" media="all" href="../../resources/css/jquery.toastmessage.css" />
+   </head>
+   <body style="margin: 60px 0">
+
+      <button id="show">显示弹窗</button>
+
+
+      <script type="text/javascript" src="../../resources/js/jquery-3.1.0.min.js" ></script>
+      <script type="text/javascript" src="../../resources/js/jquery.toastmessage.js" ></script>
+
+      <script>
+        $(document).ready(function() {
+          $('#show').click(function() {
+            $().toastmessage('showSuccessToast', '显示一个成功的弹窗!');
+          })
+        });
+      </script>
+   </body>
+</html>
