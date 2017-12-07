@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+   <head>
+      <meta charset="UTF-8" />
+      <title>表格，自动填充</title>
+
+
+      <link rel="stylesheet" type="text/css" media="all" href="../../resources/bootstrap3/css/bootstrap.min.css" />
+   </head>
+   <body style="margin: 60px 0">
+     <div class="wrapper row">
+       <div class="col-md-10 col-md-offset-1">
+          <input type="text" placeholder="item..." class="typeahead_1 form-control" />
+       </div>
+     </div>
+
+     <hr/>
+
+     <div class='wrapper row'>
+       <div class="col-md-10 col-md-offset-1">
+         <input type="text"
+         data-provide="typeahead"
+         data-source='["item 1","item 2","item 3"]'
+         placeholder="item..."
+         class="form-control" />
+       </div>
+     </div>
+
+      <!-- jquery  -->
+      <script type="text/javascript" src="../../resources/js/jquery-3.1.0.min.js" ></script>
+      <!-- bootstrap -->
+      <script type="text/javascript" src="../../resources/bootstrap3/js/bootstrap.min.js" ></script>
+
+
+      <script type="text/javascript" src="../../resources/js/typehead/bootstrap3-typeahead.min.js" ></script>
+
+      <script>
+          $(document).ready(function(){
+
+              $('.typeahead_1').typeahead({
+                  source: ["测试1","测试2","西大3"]
+              });
+          });
+      </script>
+   </body>
+</html>

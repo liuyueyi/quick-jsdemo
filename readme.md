@@ -12,7 +12,7 @@
 
 主要利用的 `datarangepicker`, 支持开始时间到结束时间的选择，有丰富的配置项，基本上可以满足各种姿势的需求，好用不复杂
 
-详细使用可以参考: [日期空间使用说明](views/datepicker/readme.md)
+详细使用可以参考: [日期控件使用说明](views/datepicker/readme.md)
 
 演示demo ： ![datepickerDemo](demoImages/datepicker.gif)
 
@@ -33,3 +33,10 @@
 详细使用说明: [toast使用说明](views/toast/readme.md)
 
 演示demo: ![demo](demoImages/toast.gif)
+
+
+### 4. markdown富文本编辑
+
+markdown视图
+
+详细使用说明 : [markdown使用说明](views/markdown/readme.md)
