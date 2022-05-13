@@ -66,7 +66,12 @@ function formatJsonStr(line) {
     }
 }
 
-function expandJsonStr(jsonStr) {
+/**
+ * json串，平铺为json对象
+ * @param jsonStr
+ * @returns {*|[]|undefined}
+ */
+function expandJsonStr2obj(jsonStr) {
     jsonStr = jsonStr.replace(/"\w+":\s*\d{16,}/g, function (longVal) {
         let split = longVal.split(":");
         return split[0] + ':' + '"' + split[1].trim() + '"';
@@ -74,7 +79,16 @@ function expandJsonStr(jsonStr) {
     return formatJsonStr(jsonStr);
 }
 
-// 实现json字符串的平铺
-const demo = '{"action":"dd","con":"{\\"a\\":123,\\"b\\":1293847125987}"}';
-var result = expandJsonStr(demo);
-console.log(result);
+
+/**
+ * json串，平铺并输出json字符串
+ * @param jsonStr
+ * @returns {string}
+ */
+function expandJsonStr2Str(jsonStr) {
+    let result = expandJsonStr2obj(jsonStr);
+    if (typeof (result) == 'string') {
+        return result;
+    }
+    return JSON.stringify(result);
+}

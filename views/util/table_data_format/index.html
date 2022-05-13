@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>表格数据格式化</title>
+<link rel="stylesheet" type="text/css" media="all" href="index.css"/>
+</head>
+<body>
+
+<h2 class="container">
+    表格数据格式化
+</h2>
+<hr/>
+
+<div style="padding-left:2em">
+    <input type="radio" id="sql" name="table" value="sql" checked>
+    <label for="sql">插入SQL</label>
+
+    <input type="radio" id="json" name="table" value="json">
+    <label for="json">JSON对象</label>
+    <br/>
+    插入表格名: <input type="text" id="tableName" style="width:20%">
+    <hr/>
+</div>
+
+
+<div class="wrapper wp-json layout-left-right" style="height: 762px;">
+    <div class="panel-body mod-json">
+        <div class="row panel-txt" style="padding-left:1em">
+            <div class="CodeMirror cm-s-default CodeMirror-wrap CodeMirror-empty">
+                <textarea id="json-src" placeholder="在这里粘贴表数据data"
+                          class="form-control mod-textarea" style="height:100%;padding:10px 10px 10px 30px;border:0;border-radius:0;resize: none;
+                  outline:none;border: 1px solid #eee"></textarea>
+            </div>
+        </div>
+        <div id="modJsonResult" class="row rst-item">
+            <div id="json-target">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../../resources/js/util/tableDataFormat.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

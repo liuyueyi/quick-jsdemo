@@ -40,3 +40,9 @@
 markdown视图
 
 详细使用说明 : [markdown使用说明](views/markdown/readme.md)
+
+
+### 5. 工具类
+
+- 将json字符串中所有满足json串定义的进行格式化: [jsonExpand](views/util/json_expand/readme.md)
+- 表格数据转insert sql/json: [tableDataFormat](views/util/table_data_format/readme.md)
