@@ -7,6 +7,13 @@ function parseTemplateToSql() {
     let newTableName = document.getElementById("tableName").value.trim();
     const newContent = document.getElementById("json-src").value.trim();
 
+    if (newCheckedTag !== checkedTag) {
+        // 切换选中时，更新提示
+        newTableName = "";
+        document.getElementById("tableName").value = "";
+        document.getElementById("tip").innerHTML = newCheckedTag === "sql" ? "插入tableName" : "分组字段";
+    }
+
     if (newContent === lastContent && newCheckedTag === checkedTag && newTableName === lastTableName) {
         // 完全相同时，不参与计算
         console.log("ignore to update content!");
@@ -16,9 +23,9 @@ function parseTemplateToSql() {
     lastContent = newContent;
     checkedTag = newCheckedTag;
     lastTableName = newTableName;
-    if (newTableName.length === 0) newTableName = "请用表名替换";
+    if (newTableName.length === 0 && newCheckedTag === "sql") newTableName = "请用表名替换";
 
-    result = newCheckedTag === 'sql' ? table2insertSql(newContent, newTableName) : table2jsonStr(newContent);
+    result = newCheckedTag === 'sql' ? table2insertSql(newContent, newTableName) : table2jsonStr(newContent, newTableName);
 
     var render_html = "";
     if (result === "error") {
@@ -32,7 +39,7 @@ function parseTemplateToSql() {
             render_html += "<div class='content-info'>" + result['values'][i] + "</div>";
             render_html += "<br/>"
         }
-        render_html += "<br/><h3>转换结果：</h3><div style='color:red;' class='content-info'>" + result['str'].replaceAll("\n", "<br/>") + ";</div>";
+        render_html += "<br/><h3>转换结果：</h3><div style='color:red;' class='content-info'>" + result['str'].replaceAll("\n", "<br/>") + "</div>";
 
     }
     document.getElementById("json-target").innerHTML = render_html;

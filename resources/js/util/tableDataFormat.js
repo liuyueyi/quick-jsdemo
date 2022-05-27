@@ -111,7 +111,7 @@ function formatTable(content) {
  * 表格内容转json数组
  * @param content
  */
-function table2jsonStr(content) {
+function table2jsonStr(content, groupKey) {
     let table_content = formatTable(content);
     let i = 0;
     let result = [];
@@ -124,7 +124,29 @@ function table2jsonStr(content) {
         }
         result[i++] = kv;
     }
-    table_content['str'] = JSON.stringify(result);
+
+    if (typeof (groupKey) === 'undefined' || groupKey == null || groupKey.trim().length === 0) {
+        table_content['str'] = JSON.stringify(result);
+    } else {
+        groupKey = groupKey.trim();
+        let ans = {}
+        for (let index = 0; index < result.length; index++) {
+            const target = result[index];
+            const key = target[groupKey];
+            if (typeof (key) === "undefined") {
+                // 不存在时，返回json数组
+                table_content['str'] = JSON.stringify(result);
+                return table_content;
+            }
+
+            if (typeof (ans[key]) === 'undefined') {
+                ans[key] = [target];
+            } else {
+                ans[key][ans[key].length] = target;
+            }
+        }
+        table_content['str'] = JSON.stringify(ans);
+    }
     return table_content;
 }
 
