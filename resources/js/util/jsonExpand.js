@@ -15,13 +15,13 @@ function processJsonObj(jsonBody, line) {
 
         // 长整数会转换为对象，做一个兼容
         if (keys.length === 3) {
-            var sub = keys[0] + keys[1] + keys[2];
+            let sub = keys[0] + keys[1] + keys[2];
             if (sub == 'sec' || sub == 'sce' || sub == 'esc' || sub == 'ecs' || sub == 'cse' || sub == "ces") {
                 return line;
             }
         }
 
-        var result = {};
+        let result = {};
         for (let key in jsonBody) {
             const ans = formatJsonStr(jsonBody[key]);
             result[key] = ans;
@@ -38,10 +38,10 @@ function processJsonArray(jsonArray) {
             return jsonArray;
         }
 
-        var result = [];
-        var index = 0;
-        for (let val in jsonArray) {
-            result[index++] = formatJsonStr(val);
+        let result = [];
+        for (let val of jsonArray) {
+            // for of 这里的val为数组内容； 如果是 for in, 则val为数组下标
+            result.push(formatJsonStr(val));
         }
         return result;
     } catch (e) {
@@ -58,7 +58,6 @@ function formatJsonStr(line) {
         } else if (isObj(jsonBody)) {
             return processJsonObj(jsonBody, line);
         } else {
-
             return line;
         }
     } catch (e) {
